@@ -1,0 +1,14 @@
+.SearchResults-btn {
+   padding: 7px;
+   margin-top: 50px;
+   border-radius: 5px;
+   outline: none;
+   border: none;
+   background-color: blueviolet;
+   transition: color ease 0.5s;
+}
+.SearchResults-btn:hover {
+   background-color: rgb(110, 22, 192);
+   cursor: pointer;
+   color: wheat;
+}
