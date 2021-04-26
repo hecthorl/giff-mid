@@ -1,17 +1,22 @@
-import useGlobalgifs from 'hooks/useGlobalgifs';
+import useSingleGif from 'hooks/useSingleGif';
+import { memo } from 'react';
+import { Helmet } from 'react-helmet';
 
-const Detail = ({ params }) => {
-   const { gifs } = useGlobalgifs();
+const Detail = ({ params: { id } }) => {
+   const gif = useSingleGif({ id });
 
-   const gif = gifs.find(({ id }) => id === params.id);
-
-   console.log(gif || 'No hay gif');
+   if (!gif) return null;
+   const { title, img } = gif;
 
    return (
       <div>
-         <img src={gif.img} alt="gify" />
+         <Helmet>
+            <title> Gify | {title}</title>
+         </Helmet>
+         <h3>{title}</h3>
+         <img src={img} alt="gify" />
       </div>
    );
 };
 
-export default Detail;
+export default memo(Detail);
